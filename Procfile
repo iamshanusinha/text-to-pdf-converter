@@ -1,0 +1,1 @@
+web: gunicorn text_to_pdf_project.wsgi --log-file -
