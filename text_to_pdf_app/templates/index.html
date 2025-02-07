@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to PDF Converter</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h2>Text to PDF Converter</h2>
+    <form id="convertForm" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="text" rows="10" cols="50" placeholder="Enter your text here..." id="textArea"></textarea><br>
+
+        <label for="font_size">Font Size:</label>
+        <input type="number" name="font_size" value="12" min="8" max="50"><br>
+
+        <label for="font_color">Font Color:</label>
+        <input type="color" name="font_color" value="#000000" id="fontColorInput"><br>
+
+        <label for="signature">Signature:</label>
+        <input type="text" name="signature" placeholder="Enter signature (optional)"><br>
+
+        <label for="filename">Filename:</label>
+        <input type="text" name="filename" id="filename" placeholder="Leave blank to use first 3 words"><br>
+
+        <label for="orientation">Page Orientation:</label>
+        <select name="orientation" id="orientation">
+            <option value="portrait">Portrait</option>
+            <option value="landscape">Landscape</option>
+        </select><br>
+
+        <button type="submit" id="convertBtn">Convert to PDF</button>
+    </form>
+
+    <!-- Popup modal -->
+    <div id="popup">
+        <button id="popup-close">×</button>
+        <h3>Your PDF is ready!</h3>
+        <a id="downloadLink" href="#" target="_blank">
+            <button>Download PDF</button>
+        </a>
+    </div>
+
+    <footer>
+        <p>Owner: Shanu Sinha | Email: <a href="mailto:iamshanusinha@gmail.com">iamshanusinha@gmail.com</a> | LinkedIn: <a href="https://www.linkedin.com/in/iamshanusinha/" target="_blank">https://www.linkedin.com/in/iamshanusinha/</a></p>
+    </footer>
+
+    <script>
+        // Change text color and update the font color box
+        document.getElementById('fontColorInput').addEventListener('input', function() {
+            const selectedColor = this.value;
+            document.getElementById('textArea').style.color = selectedColor;
+        });
+
+        document.getElementById('convertForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show the popup after the form is submitted
+            document.getElementById('popup').style.display = 'block';
+
+            // Assuming that the server returns the PDF file URL in the response
+            fetch(window.location.href, {
+                method: 'POST',
+                body: new FormData(this),
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                const pdfURL = URL.createObjectURL(blob);
+                document.getElementById('downloadLink').href = pdfURL;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+
+        // Close the popup when the close button is clicked
+        document.getElementById('popup-close').addEventListener('click', function() {
+            document.getElementById('popup').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
