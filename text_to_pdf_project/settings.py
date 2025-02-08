@@ -12,7 +12,7 @@ DEBUG = True
 
 # Define the hosts that are allowed to connect to your Django app.
 # ALLOWED_HOSTS = ['*']  # You can add specific domains like 'localhost', '127.0.0.1', etc.
-ALLOWED_HOSTS = ['text2pdf.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['text-to-pdf-converter-ijig.onrender.com', 'localhost', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
