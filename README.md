@@ -15,8 +15,7 @@ Before you can run this application, you need to have the following installed:
 
 - Python 3.x
 - Django
-- SQLite (or any other preferred database)
-- Heroku CLI (for deployment)
+- https://www.netlify.com
 
 ## Installation
 
