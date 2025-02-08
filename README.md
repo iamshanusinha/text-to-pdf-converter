@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Text to PDF Project
 =======
 # text-to-pdf-converter# Text to PDF Project
 >>>>>>> d98a729 (Procfile)
+=======
+# text-to-pdf-converter# Text to PDF Project
+>>>>>>> d98a729ffb9f40514261967a58246d943330e2a8
 
 A Django-based web application that allows users to convert text content into PDF format. The application provides a user-friendly interface for uploading text and generating PDF files.
 
@@ -31,6 +35,7 @@ Follow these steps to set up the project locally:
    ```bash
    git clone https://github.com/your-username/text_to_pdf_project.git
 <<<<<<< HEAD
+<<<<<<< HEAD
    cd text_to_pdf_project
 =======
    cd text_to_pdf_project
@@ -40,3 +45,6 @@ Follow these steps to set up the project locally:
 =======
 # text-to-pdf-converter# Text to PDF Project
 >>>>>>> d98a729 (Procfile)
+=======
+   cd text_to_pdf_project
+>>>>>>> d98a729ffb9f40514261967a58246d943330e2a8
