@@ -23,8 +23,7 @@ Before you can run this application, you need to have the following installed:
 
 - Python 3.x
 - Django
-- SQLite (or any other preferred database)
-- Heroku CLI (for deployment)
+- https://www.netlify.com
 
 ## Installation
 
@@ -47,4 +46,3 @@ Follow these steps to set up the project locally:
 >>>>>>> d98a729 (Procfile)
 =======
    cd text_to_pdf_project
->>>>>>> d98a729ffb9f40514261967a58246d943330e2a8
