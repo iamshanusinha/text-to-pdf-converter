@@ -4,48 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text to PDF Converter</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="../static/styles.css">
 </head>
 <body>
-    <h2>Text to PDF Converter</h2>
-    <form id="convertForm" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        <textarea name="text" rows="10" cols="50" placeholder="Enter your text here..." id="textArea"></textarea><br>
+    <div class="container">
+        <h2>Text to PDF Converter</h2>
+        <form id="convertForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <textarea name="text" rows="10" cols="50" placeholder="Enter your text here..." id="textArea"></textarea><br>
 
-        <label for="font_size">Font Size:</label>
-        <input type="number" name="font_size" value="12" min="8" max="50"><br>
 
-        <label for="font_color">Font Color:</label>
-        <input type="color" name="font_color" value="#000000" id="fontColorInput"><br>
+            <div class="controls">
+                <label for="font_size">Font Size:</label>
+                <input type="number" name="font_size" value="12" min="8" max="50">
+            </div>
 
-        <label for="signature">Signature:</label>
-        <input type="text" name="signature" placeholder="Enter signature (optional)"><br>
+            <div class="controls">
+                <label for="font_color">Font Color:</label>
+                <input type="color" name="font_color" value="#000000" id="fontColorInput">
+            </div>
 
-        <label for="filename">Filename:</label>
-        <input type="text" name="filename" id="filename" placeholder="Leave blank to use first 3 words"><br>
+            <div class="controls">
+                <label for="signature">Signature:</label>
+                <input type="text" name="signature" placeholder="Enter signature (optional)">
+            </div>
 
-        <label for="orientation">Page Orientation:</label>
-        <select name="orientation" id="orientation">
-            <option value="portrait">Portrait</option>
-            <option value="landscape">Landscape</option>
-        </select><br>
+            <div class="controls">
+                <label for="filename">Filename:</label>
+                <input type="text" name="filename" id="filename" placeholder="Leave blank to use first 3 words">
+            </div>
 
-        <button type="submit" id="convertBtn">Convert to PDF</button>
-    </form>
+            <div class="controls">
+                <label for="orientation">Page Orientation:</label>
+                <select name="orientation" id="orientation">
+                    <option value="portrait">Portrait</option>
+                    <option value="landscape">Landscape</option>
+                </select>
+            </div>
 
-    <!-- Popup modal -->
-    <div id="popup">
-        <button id="popup-close">×</button>
-        <h3>Your PDF is ready!</h3>
-        <a id="downloadLink" href="#" target="_blank">
-            <button>Download PDF</button>
-        </a>
+            <button type="submit" id="convertBtn">Convert to PDF</button>
+        </form>
     </div>
 
+    <!-- Modal for PDF ready notification -->
+    <div id="popup" class="popup-container">
+        <div class="popup-content">
+            <button id="popup-close" class="close-btn">×</button>
+            <h3>Your PDF is ready!</h3>
+            <a id="downloadLink" href="#" target="_blank">
+                <button class="download-btn">Download PDF</button>
+            </a>
+        </div>
+    </div>
     <footer>
-        <p>Owner: Shanu Sinha | Email: <a href="mailto:iamshanusinha@gmail.com">iamshanusinha@gmail.com</a> | LinkedIn: <a href="https://www.linkedin.com/in/iamshanusinha/" target="_blank">https://www.linkedin.com/in/iamshanusinha/</a></p>
+        <div class="footer-content" style="text-align: center;">
+            <p>Owner: Shanu Sinha | Email: <a href="mailto:iamshanusinha@gmail.com">gmail</a> | 
+            <a href="https://www.linkedin.com/in/iamshanusinha/" target="_blank" aria-label="LinkedIn">LinkedIn</a> | 
+            <a href="https://github.com/iamshanusinha" target="_blank" aria-label="GitHub">GitHub</a> | 
+            <a href="https://twitter.com/iamshanusinha" target="_blank" aria-label="Twitter">Twitter</a></p>
+        </div>
     </footer>
-
     <script>
         // Change text color and update the font color box
         document.getElementById('fontColorInput').addEventListener('input', function() {
@@ -53,13 +71,10 @@
             document.getElementById('textArea').style.color = selectedColor;
         });
 
+
         document.getElementById('convertForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show the popup after the form is submitted
-            document.getElementById('popup').style.display = 'block';
-
-            // Assuming that the server returns the PDF file URL in the response
             fetch(window.location.href, {
                 method: 'POST',
                 body: new FormData(this),
@@ -67,7 +82,9 @@
             .then(response => response.blob())
             .then(blob => {
                 const pdfURL = URL.createObjectURL(blob);
+                // Show the modal with the PDF link
                 document.getElementById('downloadLink').href = pdfURL;
+                document.getElementById('popup').style.display = 'flex'; // Show the popup
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -76,7 +93,7 @@
 
         // Close the popup when the close button is clicked
         document.getElementById('popup-close').addEventListener('click', function() {
-            document.getElementById('popup').style.display = 'none';
+            document.getElementById('popup').style.display = 'none'; // Hide the popup
         });
     </script>
 </body>

@@ -1,4 +1,4 @@
-/* Basic styling for the form and pop-up */
+/* Basic styling for the page and buttons */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -9,41 +9,25 @@ body {
 h2 {
     text-align: center;
     font-size: 24px;
+    margin-block-end: 20px;
 }
 
-form {
+.container {
     max-inline-size: 600px;
     margin: 0 auto;
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    text-align: center;
 }
 
-input, textarea, button, select {
+textarea {
     inline-size: 100%;
     padding: 12px;
-    margin: 10px 0;
+    font-size: 16px;
+    margin-block-end: 20px;
     box-sizing: border-box;
     border-radius: 4px;
-}
-
-/* Styling for input elements */
-textarea {
-    font-size: 16px;
-    padding: 12px;
     border: 1px solid #ccc;
 }
 
-input[type="color"] {
-    inline-size: 60px;
-    block-size: 35px;
-    border: 1px solid #ccc;
-    padding: 0;
-    cursor: pointer;
-}
-
-/* Styling for buttons */
 button {
     background-color: #4CAF50;
     color: white;
@@ -58,43 +42,39 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Popup modal styling */
-#popup {
-    display: none;
+.controls {
+    margin-block-end: 20px;
+}
+
+/* Popup styling */
+.popup-container {
+    display: none; /* Hidden by default */
     position: fixed;
-    inset-block-start: 50%;
-    inset-inline-start: 50%;
-    transform: translate(-50%, -50%);
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    inset-block-end: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* Ensure it appears above other content */
+}
+
+.popup-content {
     background-color: white;
     padding: 40px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
-    z-index: 999;
-    inline-size: 400px; /* Larger size */
     border-radius: 8px;
+    inline-size: 400px; /* Fixed width for the popup */
 }
 
-#popup h3 {
+.popup-content h3 {
     margin: 20px 0;
     font-size: 18px;
 }
 
-#popup-close {
-    position: absolute;
-    inset-block-start: 5px;
-    inset-inline-end: 5px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #ccc;
-}
-
-#popup-close:hover {
-    color: #333;
-}
-
-#popup button {
+.popup-content button {
     background-color: #d31f1f;
     color: white;
     border: none;
@@ -104,39 +84,68 @@ button:hover {
     border-radius: 3px;
 }
 
-#popup button:hover {
-    background-color: #d31f1f;
+.popup-content button:hover {
+    background-color: #c61c1c;
 }
 
-/* Custom styling for the 'Convert to PDF' button */
-#convert-button {
-    background-color: #4CAF50;
-    color: white;
+.close-btn {
+    position: absolute;
+    inset-block-start: 10px;
+    inset-inline-end: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    .container {
+        inline-size: 90%;
+    }
+
+    .popup-content {
+        inline-size: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    textarea {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Bold Button styling */
+#boldBtn {
+    background-color: #f39c12;
+    color: rgb(0, 0, 0);
     border: none;
     cursor: pointer;
-    padding: 12px 20px;
+    padding: 10px 20px;
     font-size: 16px;
     border-radius: 4px;
-    inline-size: 100%;
+    margin-block-end: 10px;
 }
 
-#convert-button:hover {
-    background-color: #45a049;
-}
-
-/* Styling for the close button in the pop-up */
-#popup-close {
-    background: none; /* No background */
-    border: none;     /* No border */
-    font-size: 40px;   /* Font size */
-    cursor: pointer;  /* Pointer cursor on hover */
-    color: #0edfff;    /* Text color */
-    position: absolute; 
-    inset-block-start: 5px;           /* Position from the top */
-    inset-inline-end: 5px;         /* Position from the right */
-}
-
-
-#popup-close:hover {
-    color: #333;
+#boldBtn:hover {
+    background-color: #070707;
 }
