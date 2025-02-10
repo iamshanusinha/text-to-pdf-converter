@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 # Text to PDF Project
 =======
 # text-to-pdf-converter# Text to PDF Project
->>>>>>> d98a729 (Procfile)
 =======
 # text-to-pdf-converter# Text to PDF Project
 >>>>>>> d98a729ffb9f40514261967a58246d943330e2a8
