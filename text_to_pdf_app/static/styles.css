@@ -1,151 +1,198 @@
-/* Basic styling for the page and buttons */
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #f4f4f4;
 }
 
+/* Container for the form */
+.container {
+    inline-size: 80%;
+    max-inline-size: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #629bf7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Heading */
 h2 {
     text-align: center;
+    color: #333;
     font-size: 24px;
-    margin-block-end: 20px;
 }
 
-.container {
-    max-inline-size: 600px;
-    margin: 0 auto;
-    text-align: center;
-}
-
+/* Textarea */
 textarea {
     inline-size: 100%;
-    padding: 12px;
-    font-size: 16px;
-    margin-block-end: 20px;
-    box-sizing: border-box;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    resize: vertical;
+    margin-block-end: 15px;
+    inline-size: 98%; 
 }
 
+/* Controls for inputs */
+.controls {
+    margin-block-end: 15px;
+    inline-size: 98%; 
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    margin-block-end: 5px;
+    display: block;
+}
+
+/* Input fields */
+input[type="text"], input[type="number"], select {
+    inline-size: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Submit Button */
 button {
     background-color: #4CAF50;
     color: white;
+    padding: 10px 20px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    padding: 12px 20px;
     font-size: 16px;
-    border-radius: 4px;
+    inline-size: 99%; 
 }
 
 button:hover {
     background-color: #45a049;
 }
 
-.controls {
-    margin-block-end: 20px;
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    inset-block-end: 0;
+    inline-size: 100%;
 }
 
-/* Popup styling */
+/* Footer Links */
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Popup Styles */
 .popup-container {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     inset-block-start: 0;
     inset-inline-start: 0;
-    inset-inline-end: 0;
-    inset-block-end: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    inline-size: 100%;
+    block-size: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    z-index: 999; /* Ensure it appears above other content */
 }
 
 .popup-content {
-    background-color: white;
-    padding: 40px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
+    background-color: #fff;
+    padding: 30px;
     border-radius: 8px;
-    inline-size: 400px; /* Fixed width for the popup */
+    text-align: center;
+    max-inline-size: 400px;
+    inline-size: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .popup-content h3 {
     margin: 20px 0;
-    font-size: 18px;
-}
-
-.popup-content button {
-    background-color: #d31f1f;
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 3px;
-}
-
-.popup-content button:hover {
-    background-color: #c61c1c;
-}
-
-.close-btn {
-    position: absolute;
-    inset-block-start: 10px;
-    inset-inline-end: 10px;
-    background: none;
-    border: none;
     font-size: 20px;
-    cursor: pointer;
-    color: #ccc;
 }
 
-.close-btn:hover {
-    color: #333;
+.popup-content .download-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.popup-content .download-btn:hover {
+    background-color: #45a049;
+}
+
+.popup-content .close-btn {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-block-start: 10px;
+}
+
+.popup-content .close-btn:hover {
+    background-color: #e03e3e;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    h2 {
-        font-size: 20px;
-    }
-
     .container {
         inline-size: 90%;
-    }
-
-    .popup-content {
-        inline-size: 80%;
-    }
-}
-
-@media (max-width: 480px) {
-    h2 {
-        font-size: 18px;
-    }
-
-    button {
-        font-size: 14px;
-        padding: 10px 16px;
+        padding: 15px;
     }
 
     textarea {
-        font-size: 14px;
-        padding: 10px;
+        font-size: 13px;
     }
-}
 
-/* Bold Button styling */
-#boldBtn {
-    background-color: #f39c12;
-    color: rgb(0, 0, 0);
+    button {
+        inline-size: 100%;
+    }
+
+    /* Make sure the color input has a visible background */
+    input[type="color"] {
+    -webkit-appearance: none;
+    appearance: none;
     border: none;
+    inline-size: 40px;
+    block-size: 40px;
     cursor: pointer;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 4px;
-    margin-block-end: 10px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #e80404;
+    inline-size: 99%; 
+     /* Default black background */
 }
 
-#boldBtn:hover {
-    background-color: #070707;
+    input[type="color"]
+    select {
+        inline-size: 150%;
+        padding: 15px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #910c0c;
+    }
+
+
 }
+
